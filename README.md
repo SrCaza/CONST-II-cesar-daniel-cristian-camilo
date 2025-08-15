@@ -1,5 +1,15 @@
-# CONST-II-Daniel-cesar-camilo
-Trabajo de semestre 
-#Integrantes
-Daniel agudelo, cesar zuluaga, camilo toro
-GRUPO LUNES MIERCOLES (4:00PM A 6:00PM)
+# CONST-II-Daniel-Cesar-Camilo
+
+##Integrantes 
+- Daniel Agudelo
+- Cesar Zuluaga
+- Camilo Toro
+
+##GRUPO 
+LUNES - MIERCOLES (16:00 - 21:00)
+
+## Tecnologías 
+- Springboot con MySQL
+- Java 17 o superior
+
+
