@@ -3,6 +3,7 @@
 ## Integrantes 
 - Daniel Agudelo
 - Cesar Zuluaga
+- Cristian 
 - Camilo Toro
 
 ## Grupo
