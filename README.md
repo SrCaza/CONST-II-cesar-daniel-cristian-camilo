@@ -5,7 +5,7 @@
 - Cesar Zuluaga
 - Camilo Toro
 
-## GRUPO 
+## Grupo
 LUNES - MIERCOLES (16:00 - 21:00)
 
 ## Tecnologías 
