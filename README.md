@@ -1,11 +1,11 @@
 # CONST-II-Daniel-Cesar-Camilo
 
-##Integrantes 
+## Integrantes 
 - Daniel Agudelo
 - Cesar Zuluaga
 - Camilo Toro
 
-##GRUPO 
+## GRUPO 
 LUNES - MIERCOLES (16:00 - 21:00)
 
 ## Tecnologías 
