@@ -6,52 +6,36 @@ public class Staff {
     private Role role;
     private String email;
     private String permissions;
-
-
-    public Staff(long id, String name, Role role, String email){
-        this.id = id;
-        this.name = name;
-        this.role = role;
-        this.email = email;
-    }
-
-    public long getId(){
-        return id;
-    }
-
-    public void setId(long id){
-        this.id = id;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public Role getRole(){
-        return role;
-    }
-
-    public void setRole(Role role){
-        this.role = role;
-    }
-
-    public String getEmail(){
-        return email;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public String getPermissions(String permissions){
-        return permissions;
-    }
-
-    public void setPermissions(String permissions){
-        this.permissions = permissions;
-    }
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPermissions() {
+		return permissions;
+	}
+	public void setPermissions(String permissions) {
+		this.permissions = permissions;
+	}
+    
+    
 }
