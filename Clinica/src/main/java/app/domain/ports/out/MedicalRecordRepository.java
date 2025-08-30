@@ -1,0 +1,15 @@
+package app.domain.ports.out;
+
+import java.util.List;
+
+import app.domain.model.Doctor;
+import app.domain.model.MedicalRecord;
+import app.domain.services.DoctorService;
+
+public interface MedicalRecordRepository {
+	public void CreateMedicalRecord(MedicalRecord createMedicalRecord);
+	public List<MedicalRecord> SearchMedicalRecord(long id, MedicalRecord searchMedicalRecord);
+	public static void save(MedicalRecord medicalRecord, Doctor doctor) {} 
+	public void DeleteMedicalRecord(long id, MedicalRecord DeleteMedicalRecord);
+	public static void save(DoctorService modifyMedicalRecord) {}
+}
