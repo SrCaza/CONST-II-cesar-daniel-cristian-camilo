@@ -71,7 +71,7 @@ public class PatientManagementService {
         patientRepository.save(patient);
     }
 
-    
+
     private Patient getPatientOrThrow(Id patientId) {
         Optional<Patient> patientOpt = patientRepository.findById(patientId);
         if (patientOpt.isPresent()) {
