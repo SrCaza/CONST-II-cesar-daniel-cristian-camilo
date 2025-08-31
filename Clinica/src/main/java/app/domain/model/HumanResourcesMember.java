@@ -61,5 +61,9 @@ public class HumanResourcesMember {
 
     @Override
     public int hashCode() { return id.hashCode(); }
+
+	public void setEmail(Email newEmail) {}
+
+	public void setPhone(Phone newPhone) {}
 }
 

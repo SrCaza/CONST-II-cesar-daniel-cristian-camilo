@@ -11,4 +11,3 @@ public interface DoctorRepository {
 	public List<Patient>findAllPatient(DoctorService findPatients);
 	public List<Patient>searchPatientById(DoctorService searchPatient);
 }
-

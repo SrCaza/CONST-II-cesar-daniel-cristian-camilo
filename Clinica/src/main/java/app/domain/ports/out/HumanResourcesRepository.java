@@ -11,5 +11,6 @@ public interface HumanResourcesRepository {
     void delete(Id id);
     Optional<HumanResourcesMember> findById(Id id);
     List<HumanResourcesMember> findAll();
+	Optional<HumanResourcesMember> findById(Long hrId);
 }
 

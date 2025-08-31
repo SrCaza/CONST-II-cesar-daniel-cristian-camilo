@@ -5,6 +5,7 @@ import java.util.List;
 import app.domain.model.Doctor;
 import app.domain.model.MedicalRecord;
 import app.domain.services.DoctorService;
+import app.domain.services.NurseService;
 
 public interface MedicalRecordRepository {
 	public void CreateMedicalRecord(MedicalRecord createMedicalRecord);
@@ -12,4 +13,5 @@ public interface MedicalRecordRepository {
 	public static void save(MedicalRecord medicalRecord, Doctor doctor) {} 
 	public void DeleteMedicalRecord(long id, MedicalRecord DeleteMedicalRecord);
 	public static void save(DoctorService modifyMedicalRecord) {}
+	public static void save(NurseService addMedicalRecord) {}
 }
