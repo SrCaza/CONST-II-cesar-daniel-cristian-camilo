@@ -4,8 +4,8 @@ import java.util.List;
 
 import app.domain.model.MedicalRecord;
 import app.domain.model.Patient;
-import app.domain.ports.out.MedicalRecordRepository;
-import app.domain.ports.out.NurseRepository;
+import app.domain.port.out.MedicalRecordRepository;
+import app.domain.port.out.NurseRepository;
 
 public class NurseService {
 	private NurseRepository nurseRepository;

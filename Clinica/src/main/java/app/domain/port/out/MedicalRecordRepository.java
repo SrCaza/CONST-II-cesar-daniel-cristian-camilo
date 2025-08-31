@@ -1,4 +1,4 @@
-package app.domain.ports.out;
+package app.domain.port.out;
 
 import java.util.List;
 

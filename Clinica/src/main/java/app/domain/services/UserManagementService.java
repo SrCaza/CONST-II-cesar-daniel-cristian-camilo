@@ -2,7 +2,7 @@ package app.domain.services;
 
 import app.domain.model.User;
 import app.domain.valueobject.UserId;
-import app.domain.ports.out.UserRepository;
+import app.domain.port.out.UserRepository;
 
 public class UserManagementService {
     private final UserRepository userRepository;

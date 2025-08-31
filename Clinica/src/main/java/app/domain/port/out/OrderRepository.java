@@ -1,4 +1,4 @@
-package app.domain.ports.out;
+package app.domain.port.out;
 
 import app.domain.model.Order;
 import app.domain.valueobject.Id;

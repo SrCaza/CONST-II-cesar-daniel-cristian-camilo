@@ -1,7 +1,7 @@
 package app.domain.services;
 
 import app.domain.model.Appointment;
-import app.domain.ports.out.AppointmentRepository;
+import app.domain.port.out.AppointmentRepository;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;

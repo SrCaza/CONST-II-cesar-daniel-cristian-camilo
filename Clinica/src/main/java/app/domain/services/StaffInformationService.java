@@ -3,7 +3,7 @@ package app.domain.services;
 import app.domain.model.HumanResourcesMember;
 import app.domain.valueobject.Email;
 import app.domain.valueobject.Phone;
-import app.domain.ports.out.HumanResourcesRepository;
+import app.domain.port.out.HumanResourcesRepository;
 
 import java.util.Optional;
 

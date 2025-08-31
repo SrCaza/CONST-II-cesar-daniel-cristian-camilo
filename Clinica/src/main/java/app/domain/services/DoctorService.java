@@ -3,8 +3,8 @@ package app.domain.services;
 import java.util.List;
 
 import app.domain.model.Patient;
-import app.domain.ports.out.DoctorRepository;
-import app.domain.ports.out.MedicalRecordRepository;
+import app.domain.port.out.DoctorRepository;
+import app.domain.port.out.MedicalRecordRepository;
 
 public class DoctorService {
 	private final DoctorRepository doctorRepository;

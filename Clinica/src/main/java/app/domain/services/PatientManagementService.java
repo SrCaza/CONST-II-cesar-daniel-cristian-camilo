@@ -1,7 +1,7 @@
 package app.domain.services;
 
 import app.domain.model.Patient;
-import app.domain.ports.out.PatientRepository;
+import app.domain.port.out.PatientRepository;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;

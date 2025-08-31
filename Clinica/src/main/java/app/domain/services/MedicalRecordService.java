@@ -3,7 +3,7 @@ package app.domain.services;
 import java.util.List;
 
 import app.domain.model.MedicalRecord;
-import app.domain.ports.out.MedicalRecordRepository;
+import app.domain.port.out.MedicalRecordRepository;
 
 public class MedicalRecordService {
 	
