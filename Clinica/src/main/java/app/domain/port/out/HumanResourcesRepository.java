@@ -1,16 +1,17 @@
 package app.domain.port.out;
 
-import app.domain.model.HumanResourcesMember;
+import app.domain.model.HumanResources;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;
 import java.util.List;
 
 public interface HumanResourcesRepository {
-    void save(HumanResourcesMember member);
+    void save(HumanResources member);
     void delete(Id id);
-    Optional<HumanResourcesMember> findById(Id id);
-    List<HumanResourcesMember> findAll();
-	Optional<HumanResourcesMember> findById(Long hrId);
+    Optional<HumanResources> findById(Id id);
+    List<HumanResources> findAll();
+	Optional<HumanResources> findById(Long hrId);
+	static void save(HumanResourcesRepository createEmployee) {}
 }
 

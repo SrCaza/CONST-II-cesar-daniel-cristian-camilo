@@ -1,6 +1,6 @@
 package app.domain.services;
 
-import app.domain.model.HumanResourcesMember;
+import app.domain.model.HumanResources;
 import app.domain.valueobject.Email;
 import app.domain.valueobject.Phone;
 import app.domain.port.out.HumanResourcesRepository;
@@ -15,9 +15,9 @@ public class StaffInformationService {
     }
 
     public void updateEmail(Long hrId, Email newEmail) {
-        Optional<HumanResourcesMember> memberOpt = hrRepository.findById(hrId);
+        Optional<HumanResources> memberOpt = hrRepository.findById(hrId);
         if (memberOpt.isPresent()) {
-            HumanResourcesMember member = memberOpt.get();
+            HumanResources member = memberOpt.get();
             member.setEmail(newEmail);
             hrRepository.save(member);
         } else {
@@ -26,9 +26,9 @@ public class StaffInformationService {
     }
 
     public void updatePhone(Long hrId, Phone newPhone) {
-        Optional<HumanResourcesMember> memberOpt = hrRepository.findById(hrId);
+        Optional<HumanResources> memberOpt = hrRepository.findById(hrId);
         if (memberOpt.isPresent()) {
-            HumanResourcesMember member = memberOpt.get();
+            HumanResources member = memberOpt.get();
             member.setPhone(newPhone);
             hrRepository.save(member);
         } else {

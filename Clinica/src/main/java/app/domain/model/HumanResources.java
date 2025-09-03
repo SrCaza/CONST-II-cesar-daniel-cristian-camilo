@@ -2,7 +2,7 @@ package app.domain.model;
 
 import app.domain.valueobject.*;
 
-public class HumanResourcesMember {
+public class HumanResources {
     private final Id id;
     private final String name;
     private final String lastName;
@@ -12,7 +12,7 @@ public class HumanResourcesMember {
     private final Username username;
     private Password password;
 
-    public HumanResourcesMember(Id id, String name, String lastName,
+    public HumanResources(Id id, String name, String lastName,
                                 Email email, Phone phone,
                                 DateOfBirth dateOfBirth,
                                 Username username, Password password) {
@@ -54,8 +54,8 @@ public class HumanResourcesMember {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HumanResourcesMember)) return false;
-        HumanResourcesMember that = (HumanResourcesMember) o;
+        if (!(o instanceof HumanResources)) return false;
+        HumanResources that = (HumanResources) o;
         return id.equals(that.id);
     }
 

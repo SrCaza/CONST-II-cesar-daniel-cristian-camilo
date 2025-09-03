@@ -11,7 +11,10 @@ public class UserManagementService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user){
+    public void createUser(User user) throws Exception{
+    	if (user == null || user == user) {
+    		throw new Exception("El campo no debe estar vacio");
+    	}
         userRepository.save(user);
     }
 
