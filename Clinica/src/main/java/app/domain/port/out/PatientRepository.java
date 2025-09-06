@@ -1,7 +1,7 @@
 package app.domain.port.out;
 
-import app.domain.model.Patient;
-import app.domain.services.DoctorService;
+import app.domain.port.in.Doctor.DoctorService;
+import app.domain.port.in.patient.Patient;
 import app.domain.valueobject.Id;
 import java.util.Optional;
 import java.util.List;

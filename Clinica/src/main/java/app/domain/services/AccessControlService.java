@@ -1,7 +1,7 @@
 package app.domain.services;
 
 import app.domain.model.User;
-import app.domain.port.out.UserRepository;
+import app.domain.port.in.user.UserRepository;
 import app.domain.valueobject.UserId;
 import app.domain.model.Role;
 

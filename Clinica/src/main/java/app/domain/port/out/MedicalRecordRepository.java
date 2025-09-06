@@ -2,10 +2,10 @@ package app.domain.port.out;
 
 import java.util.List;
 
-import app.domain.model.Doctor;
-import app.domain.model.MedicalRecord;
-import app.domain.services.DoctorService;
-import app.domain.services.NurseService;
+import app.domain.port.in.Doctor.Doctor;
+import app.domain.port.in.Doctor.DoctorService;
+import app.domain.port.in.Nurse.NurseService;
+import app.domain.port.in.medicalrecord.MedicalRecord;
 
 public interface MedicalRecordRepository {
 	public void CreateMedicalRecord(MedicalRecord createMedicalRecord);

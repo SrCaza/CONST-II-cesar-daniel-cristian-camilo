@@ -1,6 +1,6 @@
 package app.domain.port.out;
 
-import app.domain.model.Appointment;
+import app.domain.port.in.appointment.Appointment;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;

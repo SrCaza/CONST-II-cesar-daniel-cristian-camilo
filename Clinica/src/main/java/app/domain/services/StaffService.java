@@ -1,7 +1,7 @@
 package app.domain.services;
 
-import app.domain.model.Staff;
 import app.domain.model.Role;
+import app.domain.port.in.staff.Staff;
 import app.domain.port.out.StaffRepository;
 import java.util.Optional;
 

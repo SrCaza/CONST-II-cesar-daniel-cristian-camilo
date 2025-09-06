@@ -1,8 +1,9 @@
 package app.domain.port.out;
 
-import app.domain.model.Staff;
 import java.util.List;
 import java.util.Optional;
+
+import app.domain.port.in.staff.Staff;
 
 public interface StaffRepository {
     void save(Staff staff);
