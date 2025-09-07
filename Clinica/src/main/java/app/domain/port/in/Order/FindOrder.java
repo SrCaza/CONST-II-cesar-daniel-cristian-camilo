@@ -1,18 +1,13 @@
 package app.domain.port.in.Order;
 
 import app.domain.valueobject.Id;
-
 import java.util.List;
 
-public class OrderManagementService {
+public class FindOrder {
     private final OrderRepository orderRepository;
 
-    public OrderManagementService(OrderRepository orderRepository) {
+    public FindOrder(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-    }
-
-    public void createOrder(Order order) {
-        orderRepository.save(order);
     }
 
     public List<Order> getOrdersByPatient(Id patientId) {

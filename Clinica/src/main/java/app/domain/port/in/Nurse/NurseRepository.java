@@ -7,7 +7,7 @@ import app.domain.port.in.patient.Patient;
 
 public interface NurseRepository {
 	
-	public void addMedicalRecord(NurseService addMedicalRecord);
-	public List<Patient> searchPatientByid(long id, NurseService searchPatientByid);
-	public List<MedicalRecord> searchMedicalRecordByid(long id, NurseService searchMedicalRecordByid);
+	public void addMedicalRecord(SearchMedicalRecordByid addMedicalRecord);
+	public List<Patient> searchPatientByid(long id, SearchMedicalRecordByid searchPatientByid);
+	public List<MedicalRecord> searchMedicalRecordByid(long id, SearchMedicalRecordByid searchMedicalRecordByid);
 }

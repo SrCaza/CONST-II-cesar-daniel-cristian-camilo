@@ -1,13 +1,16 @@
 package app.domain.port.in.Order;
 
-import app.domain.valueobject.Id;
+
 import java.util.List;
-import java.util.Optional;
+
+import app.domain.valueobject.Id;
 
 public interface OrderRepository {
-    void save(Order order);
-    void delete(Id orderId);
-    Optional<Order> findById(Id orderId);
-    List<Order> findByPatientId(Id patientId);
+	public void createOrder(Order order);
+	void save(Order order);
+	public List<Order>DeleteOrder(Order deleteOrder);
+	public List<Order> findByPatientId(Id patientId);
+	
+
 }
 

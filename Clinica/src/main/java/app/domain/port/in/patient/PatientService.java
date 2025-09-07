@@ -1,6 +1,5 @@
 package app.domain.port.in.patient;
 
-import app.domain.port.out.PatientRepository;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;
