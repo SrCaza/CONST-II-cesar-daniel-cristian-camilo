@@ -2,8 +2,8 @@ package app.domain.port.in.Doctor;
 
 import java.util.List;
 
+import app.domain.port.in.medicalrecord.MedicalRecordRepository;
 import app.domain.port.in.patient.Patient;
-import app.domain.port.out.MedicalRecordRepository;
 import app.domain.valueobject.Id;
 
 public class DoctorService {

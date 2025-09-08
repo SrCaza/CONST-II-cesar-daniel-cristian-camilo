@@ -19,7 +19,7 @@ public class StaffInformationService {
         if (memberOpt.isPresent()) {
             HumanResources member = memberOpt.get();
             member.setEmail(newEmail);
-            hrRepository.save(member);
+            HumanResourcesRepository.save(member);
         } else {
             throw new IllegalArgumentException("HR Member not found with id: " + hrId);
         }
@@ -30,7 +30,7 @@ public class StaffInformationService {
         if (memberOpt.isPresent()) {
             HumanResources member = memberOpt.get();
             member.setPhone(newPhone);
-            hrRepository.save(member);
+            HumanResourcesRepository.save(member);
         } else {
             throw new IllegalArgumentException("HR Member not found with id: " + hrId);
         }

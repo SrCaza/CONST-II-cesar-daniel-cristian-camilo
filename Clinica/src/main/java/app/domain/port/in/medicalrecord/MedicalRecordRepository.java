@@ -1,4 +1,4 @@
-package app.domain.port.out;
+package app.domain.port.in.medicalrecord;
 
 import java.util.List;
 
@@ -6,13 +6,16 @@ import java.util.List;
 import app.domain.port.in.Doctor.Doctor;
 import app.domain.port.in.Doctor.DoctorService;
 import app.domain.port.in.Nurse.SearchMedicalRecordByid;
-import app.domain.port.in.medicalrecord.MedicalRecord;
+import app.domain.valueobject.Id;
 
 public interface MedicalRecordRepository {
-	public void CreateMedicalRecord(MedicalRecord createMedicalRecord);
 	public List<MedicalRecord> SearchMedicalRecord(long id, MedicalRecord searchMedicalRecord);
-	public static void save(MedicalRecord medicalRecord, Doctor doctor) {} 
+	public void save(MedicalRecord medicalRecord, Doctor doctor);
 	public void DeleteMedicalRecord(long id, MedicalRecord DeleteMedicalRecord);
-	public static void save(DoctorService modifyMedicalRecord) {}
-	public static void save(SearchMedicalRecordByid addMedicalRecord) {}
+	public void save(DoctorService modifyMedicalRecord);
+	public void save(SearchMedicalRecordByid addMedicalRecord);
+	public static void save(Id createmedicalRecord) {
+		// TODO Auto-generated method stub
+		
+	}
 }

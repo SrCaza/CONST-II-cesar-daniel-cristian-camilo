@@ -1,6 +1,7 @@
 package app.domain.port.in.Doctor;
 
-import app.domain.port.out.MedicalRecordRepository;
+import app.domain.port.in.medicalrecord.MedicalRecordRepository;
+import app.domain.valueobject.Id;
 
 public class ModifyMedicalRecord {
 	private final DoctorRepository doctorRepository;
@@ -8,7 +9,7 @@ public class ModifyMedicalRecord {
 	public ModifyMedicalRecord(DoctorRepository doctorRepository) {
 		this.doctorRepository = doctorRepository;
 	}
-	public void modifyMedicalRecord(long id, DoctorService modifyMedicalRecord) {
+	public void modifyMedicalRecord(Id modifyMedicalRecord) {
 		MedicalRecordRepository.save(modifyMedicalRecord);
 	}
 
