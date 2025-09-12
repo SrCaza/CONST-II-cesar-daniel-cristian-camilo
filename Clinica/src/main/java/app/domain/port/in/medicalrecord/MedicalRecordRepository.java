@@ -14,8 +14,5 @@ public interface MedicalRecordRepository {
 	public void DeleteMedicalRecord(long id, MedicalRecord DeleteMedicalRecord);
 	public void save(DoctorService modifyMedicalRecord);
 	public void save(SearchMedicalRecordByid addMedicalRecord);
-	public static void save(Id createmedicalRecord) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void save(Id createmedicalRecord);
 }

@@ -2,6 +2,14 @@ package app.domain.port.in.appointment;
 
 import app.domain.valueobject.Id;
 
-public interface CancelAppointmentUseCase {
-    void cancel(Id appointmentId);
+public class CancelAppointmentUseCase {
+	
+	 private final AppointmentRepository appointmentRepository;
+	 
+	public CancelAppointmentUseCase(AppointmentRepository appointmentRepository) {		 
+	        this.appointmentRepository = appointmentRepository;
+	 }
+    public void cancelApoinment(Id appointmentId) {
+    	
+    }
 }

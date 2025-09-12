@@ -1,6 +1,5 @@
-package app.domain.port.out;
+package app.domain.port.in.billing;
 
-import app.domain.port.in.billing.Billing;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;

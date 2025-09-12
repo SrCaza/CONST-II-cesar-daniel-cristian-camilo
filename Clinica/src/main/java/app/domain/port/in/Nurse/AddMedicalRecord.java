@@ -8,7 +8,7 @@ public class AddMedicalRecord {
 	public AddMedicalRecord(NurseRepository nurseRepository) {
 		this.nurseRepository = nurseRepository;
 	}
-	public void addMedicalRecord(SearchMedicalRecordByid addMedicalRecord) {
-		MedicalRecordRepository.save(addMedicalRecord);
+	public void addMedicalRecord(AddMedicalRecord addMedicalRecord) {
+		MedicalRecordRepository medicalRecordRepository = (MedicalRecordRepository) addMedicalRecord;
 	}
 }

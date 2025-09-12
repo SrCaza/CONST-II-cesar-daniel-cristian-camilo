@@ -10,6 +10,6 @@ public class CreateMedicalRecord {
 		this.medicalRecordRepository = medicalRecordRepository;
 	}
 	public void CreateMedicalRecord (Id createmedicalRecord) {
-		MedicalRecordRepository.save(createmedicalRecord);
+		medicalRecordRepository.save(createmedicalRecord);
 	}
 }

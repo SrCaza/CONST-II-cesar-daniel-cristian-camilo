@@ -1,6 +1,5 @@
 package app.domain.port.in.appointment;
 
-import app.domain.port.out.AppointmentRepository;
 import app.domain.valueobject.Id;
 
 import java.util.Optional;
@@ -30,11 +29,4 @@ public class AppointmentService {
         }
     }
 
-    public void cancelAppointment(Id appointmentId) {
-        appointmentRepository.delete(appointmentId);
-    }
-
-    public List<Appointment> getAppointmentsByPatient(Id patientId) {
-        return appointmentRepository.findByPatientId(patientId);
-    }
 }

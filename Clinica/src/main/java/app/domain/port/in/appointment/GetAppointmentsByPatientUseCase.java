@@ -1,8 +1,17 @@
 package app.domain.port.in.appointment;
 
-import app.domain.valueobject.Id;
 import java.util.List;
 
-public interface GetAppointmentsByPatientUseCase {
-    List<Appointment> getAppointmentsByPatient(Id patientId);
+import app.domain.valueobject.Id;
+
+public class GetAppointmentsByPatientUseCase {
+	
+	private final AppointmentRepository appointmentRepository;
+	
+	 public GetAppointmentsByPatientUseCase(AppointmentRepository appointmentRepository) {
+	        this.appointmentRepository = appointmentRepository;
+	 }
+	    public List<Appointment> getAppointmentsByPatient(Id patientId) {
+	        return appointmentRepository.findByPatientId(patientId);
+	    }
 }

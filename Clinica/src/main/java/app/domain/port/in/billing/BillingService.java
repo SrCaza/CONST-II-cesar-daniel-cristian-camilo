@@ -1,6 +1,5 @@
 package app.domain.port.in.billing;
 
-import app.domain.port.out.BillingRepository;
 import app.domain.valueobject.Id;
 
 import java.util.List;

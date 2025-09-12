@@ -10,7 +10,7 @@ public class ModifyMedicalRecord {
 		this.doctorRepository = doctorRepository;
 	}
 	public void modifyMedicalRecord(Id modifyMedicalRecord) {
-		MedicalRecordRepository.save(modifyMedicalRecord);
+		MedicalRecordRepository medicalRecordRepository = (MedicalRecordRepository) modifyMedicalRecord;
 	}
 
 
