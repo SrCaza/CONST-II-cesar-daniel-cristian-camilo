@@ -1,6 +1,7 @@
 package app.domain.port.in.Nurse;
 
-import app.domain.port.in.medicalrecord.MedicalRecordRepository;
+import app.domain.repositories.MedicalRecordRepository;
+import app.domain.repositories.NurseRepository;
 
 public class AddMedicalRecord {
 	private final NurseRepository nurseRepository;

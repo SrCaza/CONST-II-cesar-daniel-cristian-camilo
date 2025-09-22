@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.domain.port.in.Nurse.NurseRepository;
+import app.domain.model.MedicalRecord;
+import app.domain.model.Patient;
 import app.domain.port.in.Nurse.SearchMedicalRecordByid;
-import app.domain.port.in.medicalrecord.MedicalRecord;
-import app.domain.port.in.patient.Patient;
+import app.domain.repositories.NurseRepository;
 
 @Service
 public class NurseAdapter implements NurseRepository {

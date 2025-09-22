@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.domain.port.in.Doctor.Doctor;
-import app.domain.port.in.Doctor.DoctorService;
+import app.domain.model.Doctor;
+import app.domain.model.MedicalRecord;
 import app.domain.port.in.Nurse.SearchMedicalRecordByid;
-import app.domain.port.in.medicalrecord.MedicalRecord;
-import app.domain.port.in.medicalrecord.MedicalRecordRepository;
+import app.domain.repositories.MedicalRecordRepository;
+import app.domain.services.DoctorService;
 import app.domain.valueobject.Id;
 
 @Service

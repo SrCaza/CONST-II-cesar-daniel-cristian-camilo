@@ -1,5 +1,6 @@
 package app.domain.port.in.medicalrecord;
 
+import app.domain.repositories.MedicalRecordRepository;
 import app.domain.valueobject.Id;
 
 public class CreateMedicalRecord {

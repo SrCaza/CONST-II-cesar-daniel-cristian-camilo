@@ -1,5 +1,7 @@
 package app.domain.port.in.appointment;
 
+import app.domain.model.Appointment;
+import app.domain.repositories.AppointmentRepository;
 import app.domain.valueobject.Id;
 
 public class RescheduleAppointmentUseCase {

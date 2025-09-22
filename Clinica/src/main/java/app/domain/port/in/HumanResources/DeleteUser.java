@@ -1,5 +1,6 @@
 package app.domain.port.in.HumanResources;
 
+import app.domain.repositories.HumanResourcesRepository;
 import app.domain.valueobject.Id;
 
 public class DeleteUser {

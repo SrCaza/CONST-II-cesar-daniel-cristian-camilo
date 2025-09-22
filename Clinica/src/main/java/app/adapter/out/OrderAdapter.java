@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import app.domain.port.in.Order.Order;
-import app.domain.port.in.Order.OrderRepository;
+import app.domain.model.Order;
+import app.domain.repositories.OrderRepository;
 import app.domain.valueobject.Id;
 
 @Service

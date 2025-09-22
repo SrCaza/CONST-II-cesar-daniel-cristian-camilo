@@ -1,5 +1,8 @@
 package app.domain.port.in.appointment;
 
+import app.domain.model.Appointment;
+import app.domain.repositories.AppointmentRepository;
+
 public class ScheduleAppointmentUseCase {
 	
 	 private final AppointmentRepository appointmentRepository;

@@ -1,5 +1,8 @@
 package app.domain.port.in.Order;
 
+import app.domain.model.Order;
+import app.domain.repositories.OrderRepository;
+
 public class CreateOrder {
 	
 	private final OrderRepository orderRepository;

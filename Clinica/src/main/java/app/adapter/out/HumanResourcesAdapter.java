@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import app.domain.port.in.HumanResources.HumanResources;
-import app.domain.port.in.HumanResources.HumanResourcesRepository;
+import app.domain.model.HumanResources;
+import app.domain.repositories.HumanResourcesRepository;
 import app.domain.valueobject.Id;
 
 @Service

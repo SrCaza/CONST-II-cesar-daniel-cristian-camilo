@@ -2,6 +2,8 @@ package app.domain.port.in.appointment;
 
 import java.util.List;
 
+import app.domain.model.Appointment;
+import app.domain.repositories.AppointmentRepository;
 import app.domain.valueobject.Id;
 
 public class GetAppointmentsByPatientUseCase {

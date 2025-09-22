@@ -2,6 +2,9 @@ package app.domain.port.in.medicalrecord;
 
 import java.util.List;
 
+import app.domain.model.MedicalRecord;
+import app.domain.repositories.MedicalRecordRepository;
+
 public class SearchMedicalRecord {
 	private final MedicalRecordRepository medicalRecordRepository;
 	

@@ -2,7 +2,8 @@ package app.domain.port.in.Nurse;
 
 import java.util.List;
 
-import app.domain.port.in.patient.Patient;
+import app.domain.model.Patient;
+import app.domain.repositories.NurseRepository;
 
 public class SearchPatientById {
 	

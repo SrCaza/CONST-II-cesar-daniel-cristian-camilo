@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import app.domain.port.in.Doctor.DoctorRepository;
-import app.domain.port.in.Doctor.DoctorService;
-import app.domain.port.in.patient.Patient;
-import app.domain.port.in.patient.PatientRepository;
+import app.domain.model.Patient;
+import app.domain.repositories.DoctorRepository;
+import app.domain.repositories.PatientRepository;
+import app.domain.services.DoctorService;
 import app.domain.valueobject.Id;
 
 @Service

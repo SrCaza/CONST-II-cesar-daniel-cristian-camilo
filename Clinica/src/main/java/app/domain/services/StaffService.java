@@ -1,8 +1,9 @@
 package app.domain.services;
 
-import app.domain.model.Role;
-import app.domain.port.in.staff.Staff;
-import app.domain.port.out.StaffRepository;
+import app.domain.model.Staff;
+import app.domain.model.Enum.Role;
+import app.domain.repositories.StaffRepository;
+
 import java.util.Optional;
 
 public class StaffService {

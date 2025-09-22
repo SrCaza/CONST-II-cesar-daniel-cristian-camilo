@@ -1,6 +1,7 @@
 package app.domain.port.in.Doctor;
 
-import app.domain.port.in.medicalrecord.MedicalRecordRepository;
+import app.domain.repositories.DoctorRepository;
+import app.domain.repositories.MedicalRecordRepository;
 import app.domain.valueobject.Id;
 
 public class ModifyMedicalRecord {

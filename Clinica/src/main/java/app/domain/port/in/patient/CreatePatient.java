@@ -1,6 +1,16 @@
 package app.domain.port.in.patient;
 
-public interface CreatePatient {
-    public void createPatient(Patient patient);
-}
+import app.domain.model.Patient;
+import app.domain.repositories.PatientRepository;
 
+public class CreatePatient {
+
+	private final PatientRepository patientRepository;
+
+	public CreatePatient(PatientRepository patientRepository) {
+		this.patientRepository = patientRepository;
+	}
+
+	public void createPatient(Patient patient) {
+	}
+}

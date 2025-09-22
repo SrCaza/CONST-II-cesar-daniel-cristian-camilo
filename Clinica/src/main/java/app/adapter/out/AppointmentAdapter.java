@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import app.domain.port.in.appointment.Appointment;
-import app.domain.port.in.appointment.AppointmentRepository;
+import app.domain.model.Appointment;
+import app.domain.repositories.AppointmentRepository;
 import app.domain.valueobject.Id;
 
 @Service					

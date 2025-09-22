@@ -2,8 +2,8 @@ package app.domain.services;
 
 import app.domain.valueobject.Email;
 import app.domain.valueobject.Phone;
-import app.domain.port.in.HumanResources.HumanResources;
-import app.domain.port.in.HumanResources.HumanResourcesRepository;
+import app.domain.model.HumanResources;
+import app.domain.repositories.HumanResourcesRepository;
 
 import java.util.Optional;
 

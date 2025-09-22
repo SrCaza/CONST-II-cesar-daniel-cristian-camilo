@@ -2,7 +2,8 @@ package app.domain.port.in.Doctor;
 
 import java.util.List;
 
-import app.domain.port.in.medicalrecord.MedicalRecord;
+import app.domain.model.MedicalRecord;
+import app.domain.repositories.DoctorRepository;
 import app.domain.valueobject.Id;
 
 public class SearchMedicalRecordById {

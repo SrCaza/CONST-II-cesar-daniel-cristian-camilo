@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import app.domain.model.User;
-import app.domain.port.in.user.UserRepository;
+import app.domain.repositories.UserRepository;
 import app.domain.valueobject.Id;
 import app.domain.valueobject.UserId;
 

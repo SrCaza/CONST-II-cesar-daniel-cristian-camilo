@@ -1,5 +1,8 @@
 package app.domain.port.in.medicalrecord;
 
+import app.domain.model.MedicalRecord;
+import app.domain.repositories.MedicalRecordRepository;
+
 public class UpdateMedicalRecord {
 	private final MedicalRecordRepository medicalRecordRepository;
 	

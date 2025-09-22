@@ -1,9 +1,9 @@
 package app.domain.services;
 
 import app.domain.model.User;
-import app.domain.port.in.user.UserRepository;
+import app.domain.model.Enum.Role;
+import app.domain.repositories.UserRepository;
 import app.domain.valueobject.UserId;
-import app.domain.model.Role;
 
 import java.util.Optional;
 

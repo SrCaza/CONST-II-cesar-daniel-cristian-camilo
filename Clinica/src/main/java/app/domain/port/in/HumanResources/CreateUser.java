@@ -2,6 +2,8 @@ package app.domain.port.in.HumanResources;
 
 import java.util.List;
 
+import app.domain.repositories.HumanResourcesRepository;
+
 public class CreateUser {
 	private final HumanResourcesRepository humanResourcesRepository;
 	
