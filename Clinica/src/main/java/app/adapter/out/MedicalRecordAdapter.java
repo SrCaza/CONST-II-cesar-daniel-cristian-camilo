@@ -2,11 +2,11 @@ package app.adapter.out;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import app.domain.model.Doctor;
 import app.domain.model.MedicalRecord;
-import app.domain.port.in.Nurse.SearchMedicalRecordByid;
 import app.domain.repositories.MedicalRecordRepository;
 import app.domain.services.DoctorService;
 import app.domain.valueobject.Id;
@@ -39,7 +39,7 @@ public class MedicalRecordAdapter implements MedicalRecordRepository {
 	}
 
 	@Override
-	public void save(SearchMedicalRecordByid addMedicalRecord) {
+	public <SearchMedicalRecordByid> void save(SearchMedicalRecordByid addMedicalRecord) {
 		// TODO Auto-generated method stub
 		
 	}

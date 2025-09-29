@@ -6,9 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import app.domain.model.Patient;
-import app.domain.repositories.DoctorRepository;
 import app.domain.repositories.PatientRepository;
-import app.domain.services.DoctorService;
 import app.domain.valueobject.Id;
 
 @Service

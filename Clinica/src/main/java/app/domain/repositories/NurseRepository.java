@@ -2,13 +2,15 @@ package app.domain.repositories;
 
 import java.util.List;
 
+
 import app.domain.model.MedicalRecord;
 import app.domain.model.Patient;
-import app.domain.port.in.Nurse.SearchMedicalRecordByid;
+import app.domain.valueobject.Id;
 
 public interface NurseRepository {
 	
-	public void addMedicalRecord(SearchMedicalRecordByid addMedicalRecord);
-	public List<Patient> searchPatientByid(long id, SearchMedicalRecordByid searchPatientByid);
-	public List<MedicalRecord> searchMedicalRecordByid(long id, SearchMedicalRecordByid searchMedicalRecordByid);
+	public void addMedicalRecord(Id addMedicalRecord);
+	public List<MedicalRecord> searchMedicalRecordByid(Id searchMedicalRecordByid);
+	public List<Patient> searchPatientByid(Id searchPatientByid);
+	
 }

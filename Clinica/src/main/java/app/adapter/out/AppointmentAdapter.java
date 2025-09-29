@@ -60,4 +60,10 @@ public class AppointmentAdapter implements AppointmentRepository {
 		
 	}
 
+	@Override
+	public void createAppointment(Id newAppointment) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
