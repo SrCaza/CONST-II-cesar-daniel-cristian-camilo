@@ -1,12 +1,17 @@
 package app.applicacion.usecase;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import app.domain.model.Staff;
 import app.domain.model.User;
 import app.domain.model.Enum.Role;
 import app.domain.repositories.StaffRepository;
 
+@Service
 public class StaffUseCase {
 	
+	@Autowired
 	private StaffRepository staffRepository;
 	
     void createStaff(Staff staff) {

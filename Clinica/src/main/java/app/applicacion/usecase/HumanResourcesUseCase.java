@@ -2,12 +2,17 @@ package app.applicacion.usecase;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import app.domain.model.HumanResources;
 import app.domain.repositories.HumanResourcesRepository;
 import app.domain.valueobject.Id;
 
+@Service
 public class HumanResourcesUseCase {
-
+	
+	@Autowired
 	private HumanResourcesRepository humanResourcesRepository;
 
 	public void createEmployee(HumanResourcesRepository createEmployee) {

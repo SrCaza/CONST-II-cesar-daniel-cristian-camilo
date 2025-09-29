@@ -2,12 +2,17 @@ package app.applicacion.usecase;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import app.domain.model.MedicalRecord;
 import app.domain.repositories.MedicalRecordRepository;
 import app.domain.valueobject.Id;
 
+@Service
 public class MedicalRecordUseCase {
 	
+	@Autowired
 	private MedicalRecordRepository medicalRecordRepository;
 	
 	public void CreateMedicalRecord (Id createmedicalRecord) {
