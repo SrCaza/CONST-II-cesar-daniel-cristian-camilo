@@ -1,9 +1,10 @@
 package app.domain.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import app.domain.model.User;
+import app.domain.model.Enum.Role;
 import app.domain.repositories.UserRepository;
 import app.domain.valueobject.UserId;
 @Service
@@ -15,14 +16,15 @@ public class UserManagementService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user) throws Exception{
-    	if (user == null || user == user) {
-    		throw new Exception("El campo no debe estar vacio");
-    	}
-        userRepository.save(user);
-    }
 
-    public void deleUser(UserId userId){
-        userRepository.delete(userId);
-    }
+	public void create(User user) throws Exception {
+		if (userRepository.findByUsername(user) != null) {
+			throw new Exception("ya existe una persona registrada con esa cedula");
+		}
+
+		if (!user.getRole().equals(Role.OWNER) && userRepository.findByUsername(user) != null) {
+			throw new Exception("ya existe una persona registrada con ese nombre de usuario");
+		}
+		userRepository.save(user);
+	}
 }

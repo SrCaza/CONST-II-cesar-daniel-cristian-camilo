@@ -64,7 +64,7 @@ public class InformationSupportService {
             );
     }
 
-    public void resetUserAccess(UserId userId, Password newPassword) {
+    public void resetUserAccess(UserId userId, String newPassword) {
         userRepository.findById(userId).ifPresent(user -> {
             user.changePassword(newPassword);
             userRepository.save(user);

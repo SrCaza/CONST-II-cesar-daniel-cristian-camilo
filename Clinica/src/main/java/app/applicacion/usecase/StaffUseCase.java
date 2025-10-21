@@ -7,26 +7,22 @@ import app.domain.model.Staff;
 import app.domain.model.User;
 import app.domain.model.Enum.Role;
 import app.domain.repositories.StaffRepository;
+import app.domain.services.UserManagementService;
 
 @Service
 public class StaffUseCase {
 	
 	@Autowired
-	private StaffRepository staffRepository;
+	private UserManagementService userManagementService;
 	
-    void createStaff(Staff staff) {
-    	
-    }
-    public void assignRoleToStaff(Long staffId, Role role) {
-    	
+	public void CreateDoctor(User user) throws Exception {
+		user.setRole(Role.DOCTOR);
+		userManagementService.create(user);
 	}
-	public void createdoctor(User user) {
-
-		
-	}
-	public void createNurse(User user) {
-		
-		
+	
+	public void createNurse(User user) throws Exception {
+		user.setRole(Role.NURSE);
+		userManagementService.create(user);
 	}
 
 }

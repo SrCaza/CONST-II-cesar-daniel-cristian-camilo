@@ -2,20 +2,21 @@ package app.adapter.in.user;
 
 import java.util.Scanner;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import app.adapter.in.builder.UserBuilder;
 import app.applicacion.usecase.StaffUseCase;
 import app.domain.model.User;
 @Controller
 public class CreateRole {
-	
 
-		private static final String MENU = "Ingrese una de las opciones \n 1. para crear doctor \n 2. para crear enfermera \n 3. para salir";
+		private static final String MENU = "Ingrese una de las opciones \n 1. para crear Doctor \n 2. para crear Enfermera \n 3. para salir";
 		private static Scanner reader = new Scanner(System.in);
 		@Autowired
 		private StaffUseCase staffUseCase;
-	
+		@Autowired
+		private UserBuilder userBuilder;
 
 		public void session() {
 			boolean session = true;
@@ -30,12 +31,12 @@ public class CreateRole {
 				String option = reader.nextLine();
 				switch (option) {
 				case "1": {
-					User user = createRole();
-					staffUseCase.createdoctor(user);
+					User user = readInfoFromUser();
+					staffUseCase.CreateDoctor(user);
 					return true;
 				}
 				case "2": {
-					User user = createRole();
+					User user = readInfoFromUser();
 					staffUseCase.createNurse(user);
 					return true;
 				}
@@ -55,12 +56,7 @@ public class CreateRole {
 			}
 		}
 		
-		private User createRole() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		private CreateRole () throws Exception{
+		private User readInfoFromUser() throws Exception{
 			System.out.println("ingrese el nombre de la persona");
 			String name = reader.nextLine();
 			System.out.println("ingrese la cedula de la persona");
@@ -71,9 +67,8 @@ public class CreateRole {
 			String password = reader.nextLine();
 			System.out.println("ingrese la edad de la persona");
 			String age = reader.nextLine();
-			System.out.print(name);
-			return;
+			return userBuilder.build(name, document, age, userName, password);
 			
 		}
 
-}
+	}
