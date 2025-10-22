@@ -1,22 +1,26 @@
 package app;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import app.adapter.in.user.CreateRole;
 
 @SpringBootApplication
-public class ClinicaApplication implements CommandLineRunner{
+public class ClinicaApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ClinicaApplication.class, args);
-	}
+    
+    @Autowired
+    private CreateRole createRole;
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("Esta prendido mi gente 😎");
+    public static void main(String[] args) {
+        SpringApplication.run(ClinicaApplication.class, args);
+    }
 
-	}
-
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("=== Bienvenido al Sistema Hospitalario ===");
+        createRole.session();
+    }
 }
-
