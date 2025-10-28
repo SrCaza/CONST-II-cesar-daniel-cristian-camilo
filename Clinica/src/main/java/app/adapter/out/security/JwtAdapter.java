@@ -1,11 +1,12 @@
 package app.adapter.out.security;
 
 import java.security.Key;
+
 import java.util.Date;
 import java.util.UUID;
 import org.springframework.stereotype.Component;
-import app.domain.model.auth.AuthCredentials;
-import app.domain.model.auth.TokenResponse;
+import app.adapter.rest.response.TokenResponse;
+import app.domain.model.auth.CredentialsAuth;
 import app.domain.repositories.TokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,7 +18,7 @@ public class JwtAdapter implements TokenRepository{
     private static final long EXPIRATION_TIME = 3 * 60 * 1000;
 
     @Override
-    public TokenResponse authenticate(AuthCredentials credentials, String role) {
+    public TokenResponse authenticate(CredentialsAuth credentials, String role) {
         String token = this.generateToken(credentials.getUsername(), role);
         TokenResponse response = new TokenResponse();
         response.setToken(token);
