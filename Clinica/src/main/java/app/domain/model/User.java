@@ -5,6 +5,7 @@ import app.domain.valueobject.*;
 
 public class User {
 	private long id;
+	private long document;
 	private String name;
 	private String password;
 	private int age;
@@ -65,5 +66,13 @@ public class User {
 
 	public void changeRole(Role newRole) {
 		this.role = newRole;
+	}
+
+	public long getDocument() {
+		return document;
+	}
+
+	public void setDocument(long document) {
+		this.document = document;
 	}
 }

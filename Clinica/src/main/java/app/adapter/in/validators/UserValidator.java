@@ -51,4 +51,19 @@ public class UserValidator extends Validators {
 
 		return password;
 	}
+
+	public long documentValidator(String document) throws Exception {
+
+		if (document == null || document.trim().isEmpty()) {
+			throw new Exception("El documento no puede estar vacío");
+		}
+
+		if (!document.matches("^[0-9]+$")) {
+			throw new Exception("El documento solo puede contener números, sin puntos, comas ni letras");
+		}
+
+		return Long.parseLong(document);
+
+	}
+
 }

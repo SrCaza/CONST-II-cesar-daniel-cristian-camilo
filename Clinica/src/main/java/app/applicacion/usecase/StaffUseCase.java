@@ -15,14 +15,16 @@ public class StaffUseCase {
 	@Autowired
 	private UserManagementService userManagementService;
 	
-	public void CreateDoctor(User user) throws Exception {
+	public User CreateDoctor(User user) throws Exception {
 		user.setRole(Role.DOCTOR);
 		userManagementService.create(user);
+		return user;
 	}
 	
-	public void createNurse(User user) throws Exception {
+	public User createNurse(User user) throws Exception {
 		user.setRole(Role.NURSE);
 		userManagementService.create(user);
+		return user;
 	}
 
 }

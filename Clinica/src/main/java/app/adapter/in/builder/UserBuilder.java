@@ -15,7 +15,7 @@ public class UserBuilder {
     public User build(String name, String document, String age, String userName, String password) throws Exception {
         User user = new User();
         user.setName(userValidator.nameValidator(name));
-        //user.setDocument(userValidator.documentValidator(document));
+        user.setDocument(userValidator.documentValidator(document));
         user.setAge(userValidator.ageValidator(age));
         user.setUsername(userValidator.userNameValidator(userName));
         user.setPassword(userValidator.passwordValidator(password));
