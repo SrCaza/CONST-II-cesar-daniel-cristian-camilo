@@ -8,5 +8,6 @@ public interface TokenRepository {
 	boolean validateToken(String token);
 	String extractUsername(String token);
 	String extractRole(String token);
+	
 
 }

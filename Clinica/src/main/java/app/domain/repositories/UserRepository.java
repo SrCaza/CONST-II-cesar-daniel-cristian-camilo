@@ -12,7 +12,7 @@ public interface UserRepository {
     void delete(UserId id);
     Optional<User> findById(UserId id);
     void delete(Id id);
-    Optional<User> findByUsername(User user);
+    User findByUsername(User user);
     List<User> findAll();
 	Optional<User> findByUsername(String username);
 }

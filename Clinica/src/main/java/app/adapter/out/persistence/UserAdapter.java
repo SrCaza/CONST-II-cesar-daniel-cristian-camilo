@@ -50,9 +50,10 @@ public class UserAdapter implements UserRepository {
 	}
 
 	@Override
-	public Optional<User> findByUsername(User user) {
+	public User findByUsername(User user) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return null;
 	}
+
 
 }
