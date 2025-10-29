@@ -2,6 +2,7 @@ package app.applicacion.usecase;
 
 import java.util.List;
 
+import app.domain.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ public class HumanResourcesUseCase {
 	@Autowired
 	private HumanResourcesRepository humanResourcesRepository;
 
+    //no esta es funcionamiento en ninguna implementacion
 	public void createEmployee(HumanResourcesRepository createEmployee) {
 		HumanResourcesRepository.save(createEmployee);
 	}

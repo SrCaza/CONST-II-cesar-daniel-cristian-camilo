@@ -14,9 +14,11 @@ public class UserUseCase {
 	@Autowired
 	private UserRepository userRepository;
 
-	void create(User user) {
+	void create(User user) throws Exception{
 
 	}
+
+
 
 	void changeRole(UserId userId, Role role) {
 

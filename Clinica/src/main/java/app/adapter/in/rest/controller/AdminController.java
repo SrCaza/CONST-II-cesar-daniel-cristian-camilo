@@ -1,5 +1,7 @@
 package app.adapter.in.rest.controller;
 
+import app.adapter.in.builder.UserBuilder;
+import app.adapter.in.rest.request.UserRequiest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +20,25 @@ import app.domain.model.User;
 
 public class AdminController {
 
-
+@Autowired
+private UserBuilder builder;
 	    @Autowired
 	    private StaffUseCase staffUseCase;
 
 	    @PostMapping("/users/doctor")
-	    public ResponseEntity<User> createDoctor(@RequestBody User user) throws Exception {
+	    public ResponseEntity<User> createDoctor(@RequestBody UserRequiest request) throws Exception {
+            User user = builder.build(request.getName(),request.getDocument(),request.getAge(),request.getUserName(),request.getPassword());
 	        User created = staffUseCase.CreateDoctor(user);
 	        return new ResponseEntity<>(created, HttpStatus.CREATED);
 	    }
 
-	    @PostMapping("/users/seller")
-	    public ResponseEntity<User> createSeller(@RequestBody User user) throws Exception {
-	        User created = staffUseCase.createNurse(user);
-	        return new ResponseEntity<>(created, HttpStatus.CREATED);
+	   // @PostMapping("/users/nurse")
+	    //public ResponseEntity<User> createSeller(@RequestBody UserRequiest user) throws Exception {
+	        //User nurse = builder.build(request.);
+            //User created = staffUseCase.createNurse(nurse);
+	        //return new ResponseEntity<>(created, HttpStatus.CREATED);
 	    }
-	}
+	//}
 
 
 
