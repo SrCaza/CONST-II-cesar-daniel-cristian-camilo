@@ -19,7 +19,7 @@ public class LoginController {
 
         @PostMapping("/users/doctor")
         public ResponseEntity<User> createDoctor(@RequestBody User user) throws Exception {
-            User created = staffUseCase.CreateDoctor(user);
+            User created = staffUseCase.createDoctor(user);
             return new ResponseEntity<>(created, HttpStatus.CREATED);
         }
 

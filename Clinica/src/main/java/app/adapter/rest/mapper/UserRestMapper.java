@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import app.adapter.in.builder.UserBuilder;
-import app.adapter.in.rest.request.UserRequiest;
+import app.adapter.in.rest.request.UserRequest;
 import app.adapter.rest.response.UserResponse;
 import app.domain.model.User;
 
@@ -13,7 +13,7 @@ public class UserRestMapper {
     @Autowired
     private UserBuilder userBuilder;
 
-    public User toDomain(UserRequiest req) throws Exception {
+    public User toDomain(UserRequest req) throws Exception {
         return userBuilder.build(
             req.getName(),
             req.getDocument(),

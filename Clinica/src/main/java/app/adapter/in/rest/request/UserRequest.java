@@ -1,6 +1,6 @@
 package app.adapter.in.rest.request;
 
-public class UserRequiest {
+public class UserRequest {
     private String name;
     private String document;
     private String userName;
@@ -37,6 +37,4 @@ public class UserRequiest {
 	public void setAge(String age) {
 		this.age = age;
 	}
-    
-
 }

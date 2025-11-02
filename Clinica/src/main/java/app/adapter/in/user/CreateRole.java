@@ -46,7 +46,7 @@ public class CreateRole {
             switch (option) {
                 case "1" -> {
                     User user = readInfoFromUser();
-                    staffUseCase.CreateDoctor(user);
+                    staffUseCase.createDoctor(user);
                     return true;
                 }
                 case "2" -> {
