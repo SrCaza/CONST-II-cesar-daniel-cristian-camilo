@@ -1,19 +1,18 @@
-package app.applicacion.usecase;
+package app.application.usecases;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import app.adapter.rest.response.TokenResponse;
-import app.domain.model.auth.CredentialsAuth;
+import app.adapter.rest.response.TokenResponseDto;
+import app.domain.model.auth.AuthCredentials;
 import app.domain.services.AuthenticationService;
 
 
 @Component
 public class LoginUseCase {
-	
     @Autowired
     private AuthenticationService authenticationService;
 
-    public TokenResponse login(CredentialsAuth credentials) throws Exception {
+    public TokenResponseDto login(AuthCredentials credentials) throws Exception {
         return authenticationService.authenticate(credentials);
     }
 }

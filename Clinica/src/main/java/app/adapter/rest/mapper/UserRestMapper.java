@@ -1,5 +1,6 @@
 package app.adapter.rest.mapper;
 
+import app.adapter.rest.request.CreateUserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +11,11 @@ import app.domain.model.User;
 
 @Component
 public class UserRestMapper {
+
     @Autowired
     private UserBuilder userBuilder;
 
-    public User toDomain(UserRequest req) throws Exception {
+    public User toDomain(CreateUserRequest req) throws Exception {
         return userBuilder.build(
             req.getName(),
             req.getDocument(),

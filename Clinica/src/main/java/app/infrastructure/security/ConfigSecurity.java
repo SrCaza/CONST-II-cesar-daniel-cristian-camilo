@@ -29,14 +29,14 @@ public class ConfigSecurity {
 	        return http.build();
 	    }
 
-	    @Bean
-	    public FilterJwt jwtAuthenticationFilter() {
-	        return new FilterJwt();
-	    }
+    @Bean
+    public FilterJwt jwtAuthenticationFilter() {
+        return new FilterJwt();
+    }
 
-	    @Bean
-	    public PasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
-
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
+

@@ -3,10 +3,10 @@ package app.domain.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.adapter.rest.response.TokenResponse;
+import app.adapter.rest.response.TokenResponseDto;
 import app.application.exceptions.BusunessException;
 import app.domain.model.User;
-import app.domain.model.auth.CredentialsAuth;
+import app.domain.model.auth.AuthCredentials;
 import app.domain.repositories.TokenRepository;
 import app.domain.repositories.UserRepository;
 
@@ -22,7 +22,7 @@ public class AuthenticationService {
     private UserRepository userRepository;
     
 
-    public TokenResponse authenticate(CredentialsAuth credentials) throws Exception{
+    public TokenResponseDto authenticate(AuthCredentials credentials) throws Exception{
         User user = this.getUserByUsername(credentials.getUsername());
         this.validatePassword(credentials.getPassword(), user.getPassword());
         return tokenRepository.authenticate(credentials, String.valueOf(user.getRole()));

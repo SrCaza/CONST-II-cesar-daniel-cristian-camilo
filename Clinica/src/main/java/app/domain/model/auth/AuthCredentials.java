@@ -1,6 +1,6 @@
 package app.domain.model.auth;
 
-public class CredentialsAuth {
+public class AuthCredentials {
 	private String username;
 	private String password;
 

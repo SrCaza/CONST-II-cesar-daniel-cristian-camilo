@@ -1,4 +1,4 @@
-package app.applicacion.usecase;
+package app.application.usecases;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

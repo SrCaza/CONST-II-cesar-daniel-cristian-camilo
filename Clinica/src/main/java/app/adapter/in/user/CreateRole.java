@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import app.adapter.in.builder.UserBuilder;
 import app.adapter.in.validators.UserValidator;
-import app.applicacion.usecase.StaffUseCase;
+import app.application.usecases.StaffUseCase;
 import app.domain.model.User;
 
 @Controller

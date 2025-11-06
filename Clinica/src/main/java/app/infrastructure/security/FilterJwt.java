@@ -16,53 +16,69 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class FilterJwt extends OncePerRequestFilter {
 
-	@Autowired
-	private TokenRepository tokenRepository;
+    @Autowired
+    private TokenRepository tokenRepository;
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
-		String token = this.extractToken(request);
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
-		if (token != null) {
-			this.processToken(token);
-		}
+        // 🔹 1️⃣ Ignorar rutas de autenticación (no requieren token)
+        String path = request.getRequestURI();
+        if (path.startsWith("/api/auth")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
-		filterChain.doFilter(request, response);
-	}
+        // 🔹 2️⃣ Extraer token del encabezado Authorization
+        String token = extractToken(request);
 
-	private String extractToken(HttpServletRequest request) {
-		String header = request.getHeader("Authorization");
-		if (header != null && header.startsWith("Bearer ")) {
-			return header.substring(7);
-		}
-		return null;
-	}
+        // 🔹 3️⃣ Si hay token, procesarlo
+        if (token != null) {
+            try {
+                processToken(token);
+            } catch (Exception e) {
+                // Si hay error en validación, se deja sin autenticación pero no se bloquea
+                System.out.println("Error al procesar token: " + e.getMessage());
+            }
+        }
 
-	private void processToken(String token) {
-		if (tokenRepository.validateToken(token)) {
-			String username = tokenRepository.extractUsername(token);
-			String role = tokenRepository.extractRole(token);
+        // 🔹 4️⃣ Continuar con el resto del filtro
+        filterChain.doFilter(request, response);
+    }
 
-			if (role == null || role.trim().isEmpty()) {
-				return; // no role -> no authentication
-			}
+    // Extrae el token del header "Authorization"
+    private String extractToken(HttpServletRequest request) {
+        String header = request.getHeader("Authorization");
+        if (header != null && header.startsWith("Bearer ")) {
+            return header.substring(7);
+        }
+        return null;
+    }
 
-			String normalized = role.trim();
-			if (!normalized.toUpperCase().startsWith("ROLE_")) {
-				normalized = "ROLE_" + normalized.toUpperCase();
-			} else {
-				normalized = normalized.toUpperCase();
-			}
+    // Procesa el token: lo valida y asigna la autenticación al contexto
+    private void processToken(String token) {
+        if (tokenRepository.validateToken(token)) {
+            String username = tokenRepository.extractUsername(token);
+            String role = tokenRepository.extractRole(token);
 
-			ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority(normalized));
+            if (role == null || role.trim().isEmpty()) {
+                return; // sin rol => sin autenticación
+            }
 
-			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,
-					authorities);
+            // Normaliza el rol (asegura formato ROLE_X)
+            String normalized = role.trim().toUpperCase();
+            if (!normalized.startsWith("ROLE_")) {
+                normalized = "ROLE_" + normalized;
+            }
 
-			SecurityContextHolder.getContext().setAuthentication(auth);
-		}
-	}
+            ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority(normalized));
 
+            UsernamePasswordAuthenticationToken auth =
+                    new UsernamePasswordAuthenticationToken(username, null, authorities);
+
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
+    }
 }

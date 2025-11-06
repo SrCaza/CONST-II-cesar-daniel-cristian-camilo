@@ -1,4 +1,4 @@
-package app.applicacion.usecase;
+package app.application.usecases;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import app.domain.model.MedicalRecord;
 import app.domain.model.Patient;
-import app.domain.repositories.MedicalRecordRepository;
 import app.domain.repositories.NurseRepository;
 import app.domain.valueobject.Id;
 
