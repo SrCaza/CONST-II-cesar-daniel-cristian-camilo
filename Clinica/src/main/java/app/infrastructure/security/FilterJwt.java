@@ -2,7 +2,6 @@ package app.infrastructure.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,69 +15,52 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class FilterJwt extends OncePerRequestFilter {
 
-    @Autowired
-    private TokenRepository tokenRepository;
+	@Autowired
+	private TokenRepository tokenRepository;
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		String token = this.extractToken(request);
 
-        // 🔹 1️⃣ Ignorar rutas de autenticación (no requieren token)
-        String path = request.getRequestURI();
-        if (path.startsWith("/api/auth")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
+		if (token != null) {
+			this.processToken(token);
+		}
 
-        // 🔹 2️⃣ Extraer token del encabezado Authorization
-        String token = extractToken(request);
+		filterChain.doFilter(request, response);
+	}
 
-        // 🔹 3️⃣ Si hay token, procesarlo
-        if (token != null) {
-            try {
-                processToken(token);
-            } catch (Exception e) {
-                // Si hay error en validación, se deja sin autenticación pero no se bloquea
-                System.out.println("Error al procesar token: " + e.getMessage());
-            }
-        }
+	private String extractToken(HttpServletRequest request) {
+		String header = request.getHeader("Authorization");
+		if (header != null && header.startsWith("Bearer ")) {
+			return header.substring(7);
+		}
+		return null;
+	}
 
-        // 🔹 4️⃣ Continuar con el resto del filtro
-        filterChain.doFilter(request, response);
-    }
+	private void processToken(String token) {
+		if (tokenRepository.validateToken(token)) {
+			String username = tokenRepository.extractUsername(token);
+			String role = tokenRepository.extractRole(token);
 
-    // Extrae el token del header "Authorization"
-    private String extractToken(HttpServletRequest request) {
-        String header = request.getHeader("Authorization");
-        if (header != null && header.startsWith("Bearer ")) {
-            return header.substring(7);
-        }
-        return null;
-    }
+			if (role == null || role.trim().isEmpty()) {
+				return; // no role -> no authentication
+			}
 
-    // Procesa el token: lo valida y asigna la autenticación al contexto
-    private void processToken(String token) {
-        if (tokenRepository.validateToken(token)) {
-            String username = tokenRepository.extractUsername(token);
-            String role = tokenRepository.extractRole(token);
+			String normalized = role.trim();
+			if (!normalized.toUpperCase().startsWith("ROLE_")) {
+				normalized = "ROLE_" + normalized.toUpperCase();
+			} else {
+				normalized = normalized.toUpperCase();
+			}
 
-            if (role == null || role.trim().isEmpty()) {
-                return; // sin rol => sin autenticación
-            }
+			ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
+			authorities.add(new SimpleGrantedAuthority(normalized));
 
-            // Normaliza el rol (asegura formato ROLE_X)
-            String normalized = role.trim().toUpperCase();
-            if (!normalized.startsWith("ROLE_")) {
-                normalized = "ROLE_" + normalized;
-            }
+			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,
+					authorities);
 
-            ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(normalized));
-
-            UsernamePasswordAuthenticationToken auth =
-                    new UsernamePasswordAuthenticationToken(username, null, authorities);
-
-            SecurityContextHolder.getContext().setAuthentication(auth);
-        }
-    }
+			SecurityContextHolder.getContext().setAuthentication(auth);
+		}
+	}
 }

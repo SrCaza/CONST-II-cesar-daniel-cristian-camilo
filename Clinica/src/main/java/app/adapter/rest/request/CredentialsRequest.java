@@ -1,7 +1,6 @@
 package app.adapter.rest.request;
 
-public class
-CredentialsRequest {
+public class CredentialsRequest {
 	private String username;
 	private String password;
 
