@@ -15,19 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+	@Autowired
+	private LoginUseCase loginUseCase;
+	@Autowired
+	private AuthRestMapper authRestMapper;
 
-    @Autowired
-    private LoginUseCase loginUseCase;
-
-    @Autowired
-    private AuthRestMapper authRestMapper;
-
-    @PostMapping("/login")
-    public ResponseEntity<TokenResponseDto> login(@RequestBody AuthRequest request) throws Exception {
-        AuthCredentials credentials = authRestMapper.toDomain(request);
-        var tokenResponse = loginUseCase.login(credentials);
-        var tokenDto = authRestMapper.toResponse(tokenResponse);
-        return ResponseEntity.ok(tokenDto);
-    }
+	@PostMapping("/login")
+	public ResponseEntity<TokenResponseDto> login(@RequestBody AuthRequest request) throws Exception {
+		System.out.println("=== LOGIN DEBUG ===");
+		System.out.println("Username: " + request.getUsername());
+		AuthCredentials credentials = authRestMapper.toDomain(request);
+		var tokenResponse = loginUseCase.login(credentials);
+		System.out.println("Token generated: " + tokenResponse.getToken());
+		System.out.println("Role in response: " + tokenResponse.getRole());
+		System.out.println("==================");
+		var tokenDto = authRestMapper.toResponse(tokenResponse);
+		return ResponseEntity.ok(tokenDto);
+	}
 }
-

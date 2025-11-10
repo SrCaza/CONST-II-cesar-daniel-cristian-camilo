@@ -80,7 +80,7 @@ public class CreateRole {
         String password = validator.stringValidator("La contraseña", reader.nextLine());
         System.out.println("Ingrese la edad de la persona");
         String ageInput = reader.nextLine();
-        int age = validator.ageValidator(ageInput);
+        String age = validator.ageValidator(ageInput);
 
         return userBuilder.build(name, document, String.valueOf(age), userName, password);
     }

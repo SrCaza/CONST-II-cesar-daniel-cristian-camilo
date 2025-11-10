@@ -32,10 +32,6 @@ public class User {
 		return age;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public Role getRole() {
 		return role;
 	}
@@ -75,4 +71,15 @@ public class User {
 	public void setDocument(long document) {
 		this.document = document;
 	}
+
+	public void setAge(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAge(String ageInt) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

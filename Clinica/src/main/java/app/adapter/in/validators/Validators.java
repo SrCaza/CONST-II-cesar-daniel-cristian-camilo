@@ -1,10 +1,12 @@
 package app.adapter.in.validators;
 
+import app.application.exceptions.InputsException;
+
 public abstract class Validators {
 
     public String stringValidator(String element, String value) throws Exception {
-        if (value == null || value.equals("")) {
-            throw new Exception(element + " no puede tener un valor vacío o nulo");
+        if (value == null || value.trim().isEmpty()) {
+            throw new InputsException(element + " no puede tener un valor vacío o nulo");
         }
         return value;
     }
@@ -13,8 +15,8 @@ public abstract class Validators {
         stringValidator(element, value);
         try {
             return Integer.parseInt(value);
-        } catch (Exception e) {
-            throw new Exception(element + " debe ser un valor numérico");
+        } catch (NumberFormatException e) {
+            throw new InputsException(element + " debe ser un valor numérico");
         }
     }
 
@@ -22,8 +24,8 @@ public abstract class Validators {
         stringValidator(element, value);
         try {
             return Long.parseLong(value);
-        } catch (Exception e) {
-            throw new Exception(element + " debe ser un valor numérico");
+        } catch (NumberFormatException e) {
+            throw new InputsException(element + " debe ser un valor numérico");
         }
     }
 
@@ -31,8 +33,8 @@ public abstract class Validators {
         stringValidator(element, value);
         try {
             return Double.parseDouble(value);
-        } catch (Exception e) {
-            throw new Exception(element + " debe ser un valor numérico");
+        } catch (NumberFormatException e) {
+            throw new InputsException(element + " debe ser un valor numérico");
         }
     }
 }

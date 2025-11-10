@@ -17,4 +17,9 @@ public class TokenResponseDto {
 	public void setToken(String token) {
 		this.token = token;
 	}
+
+	public String getRole() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
