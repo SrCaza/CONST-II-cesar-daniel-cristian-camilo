@@ -15,13 +15,15 @@ import java.util.UUID;
 @Component
 public class JwtAdapter implements TokenRepository{
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private static final long EXPIRATION_TIME = 3 * 60 * 1000;
+    private static final long EXPIRATION_TIME = 3 * 60 * 60 * 1000; // 3 horas en vez de 3 minutos
 
     @Override
     public TokenResponseDto authenticate(AuthCredentials credentials, String role) {
         String token = this.generateToken(credentials.getUsername(), role);
         TokenResponseDto response = new TokenResponseDto();
         response.setToken(token);
+        response.setRole(role); // IMPORTANTE: Setear el rol en la respuesta
+        System.out.println("Token generated with role: " + role);
         return response;
     }
 
@@ -31,6 +33,7 @@ public class JwtAdapter implements TokenRepository{
             this.getClaims(token);
             return true;
         } catch (Exception e) {
+            System.out.println("Token validation failed: " + e.getMessage());
             return false;
         }
     }
@@ -44,22 +47,26 @@ public class JwtAdapter implements TokenRepository{
     @Override
     public String extractRole(String token) {
         Claims claims = this.getClaims(token);
-        return claims.get("role", String.class);
+        String role = claims.get("role", String.class);
+        System.out.println("Extracted role from token: " + role);
+        return role;
     }
 
     private String generateToken(String username, String role) {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + EXPIRATION_TIME);
 
+        // Guardar el rol sin el prefijo ROLE_ (se agregará en el filtro)
         String token = Jwts.builder()
             .setSubject(username)
-            .claim("role", role)
+            .claim("role", role) // Guardar el rol tal como viene (ej: "DOCTOR")
             .setId(UUID.randomUUID().toString())
             .setIssuedAt(now)
             .setExpiration(expiration)
             .signWith(SECRET_KEY)
             .compact();
 
+        System.out.println("Token created for user: " + username + " with role: " + role);
         return token;
     }
 
@@ -72,5 +79,4 @@ public class JwtAdapter implements TokenRepository{
             
         return claims;
     }
-
 }

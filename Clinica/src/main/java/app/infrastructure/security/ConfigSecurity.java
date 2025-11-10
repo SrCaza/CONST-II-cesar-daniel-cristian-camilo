@@ -15,14 +15,24 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class ConfigSecurity {
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable())
-				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(
-						auth -> auth.requestMatchers("/api/auth/**").permitAll().requestMatchers("/api/admin/**")
-								.hasAnyRole("ADMIN", "HUMAN_RESOURCES").anyRequest().authenticated())
-				.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		http
+			.csrf(csrf -> csrf.disable())
+			.sessionManagement(session -> 
+				session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			)
+			.authorizeHttpRequests(auth -> auth
+				// Permitir acceso público a login
+				.requestMatchers("/api/auth/**").permitAll()
+				// Proteger endpoints de admin - USAR hasRole sin ROLE_
+				.requestMatchers("/api/admin/**").hasAnyRole("ADMIN", "HUMAN_RESOURCES")
+				// Todas las demás requieren autenticación
+				.anyRequest().authenticated()
+			)
+			.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		
 		return http.build();
 	}
 

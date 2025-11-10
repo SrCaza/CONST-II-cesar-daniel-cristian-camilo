@@ -1,7 +1,6 @@
 package app.domain.model;
 
 import app.domain.model.Enum.Role;
-import app.domain.valueobject.*;
 
 public class User {
 	private long id;
@@ -72,14 +71,19 @@ public class User {
 		this.document = document;
 	}
 
-	public void setAge(int i) {
-		// TODO Auto-generated method stub
-		
+	// CORREGIDO: Método setAge que acepta int
+	public void setAge(int age) {
+		this.age = age;
 	}
 
-	public void setAge(String ageInt) {
-		// TODO Auto-generated method stub
-		
+	// AGREGADO: Método setAge que acepta String y lo convierte
+	public void setAge(String ageStr) {
+		if (ageStr != null && !ageStr.trim().isEmpty()) {
+			try {
+				this.age = Integer.parseInt(ageStr.trim());
+			} catch (NumberFormatException e) {
+				this.age = 0; // valor por defecto si falla
+			}
+		}
 	}
-	
 }

@@ -2,12 +2,18 @@ package app.adapter.rest.response;
 
 public class TokenResponseDto {
 	private String token;
+	private String role; // AGREGADO: Campo para el rol
 
 	public TokenResponseDto() {
 	}
 
 	public TokenResponseDto(String token) {
 		this.token = token;
+	}
+
+	public TokenResponseDto(String token, String role) {
+		this.token = token;
+		this.role = role;
 	}
 
 	public String getToken() {
@@ -19,7 +25,10 @@ public class TokenResponseDto {
 	}
 
 	public String getRole() {
-		// TODO Auto-generated method stub
-		return null;
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

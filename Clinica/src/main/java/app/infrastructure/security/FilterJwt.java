@@ -20,13 +20,24 @@ public class FilterJwt extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
+		
+		String requestURI = request.getRequestURI();
+		
+		// Permitir acceso sin autenticación a endpoints públicos
+		if (requestURI.startsWith("/api/auth/")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
 		String token = this.extractToken(request);
 		System.out.println("=== JWT FILTER DEBUG ===");
-		System.out.println("Request URI: " + request.getRequestURI());
+		System.out.println("Request URI: " + requestURI);
 		System.out.println("Token present: " + (token != null));
+		
 		if (token != null) {
 			this.processToken(token);
 		}
+		
 		filterChain.doFilter(request, response);
 	}
 
@@ -42,29 +53,44 @@ public class FilterJwt extends OncePerRequestFilter {
 		System.out.println("Validating token...");
 		boolean isValid = tokenRepository.validateToken(token);
 		System.out.println("Token valid: " + isValid);
+		
 		if (isValid) {
 			String username = tokenRepository.extractUsername(token);
 			String role = tokenRepository.extractRole(token);
+			
 			System.out.println("Username: " + username);
-			System.out.println("Role extracted: '" + role + "'");
+			System.out.println("Role extracted from token: '" + role + "'");
+			
 			if (role == null || role.trim().isEmpty()) {
 				System.out.println("ERROR: Role is null or empty!");
 				return;
 			}
-			String normalized = role.trim();
-			if (!normalized.toUpperCase().startsWith("ROLE_")) {
-				normalized = "ROLE_" + normalized.toUpperCase();
-			} else {
-				normalized = normalized.toUpperCase();
+			
+			// Normalizar el rol: agregar ROLE_ si no lo tiene
+			String normalizedRole = role.trim().toUpperCase();
+			if (!normalizedRole.startsWith("ROLE_")) {
+				normalizedRole = "ROLE_" + normalizedRole;
 			}
-			System.out.println("Normalized role: " + normalized);
+			
+			System.out.println("Normalized role: " + normalizedRole);
+			
+			// Crear la autoridad con el rol normalizado
 			ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority(normalized));
+			authorities.add(new SimpleGrantedAuthority(normalizedRole));
+			
 			System.out.println("Authorities: " + authorities);
-			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,
-					authorities);
+			
+			// Crear la autenticación
+			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+				username, 
+				null,
+				authorities
+			);
+			
+			// Establecer la autenticación en el contexto de seguridad
 			SecurityContextHolder.getContext().setAuthentication(auth);
 			System.out.println("Authentication set successfully!");
+			System.out.println("SecurityContext authorities: " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 		}
 		System.out.println("======================");
 	}
