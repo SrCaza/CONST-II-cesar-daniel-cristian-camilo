@@ -1,30 +1,42 @@
 package app.application.usecases;
-
-import java.util.List;
-
+ 
+import app.domain.model.User;
+import app.domain.model.Enum.Role;
+import app.domain.services.UserManagementService;
+import app.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import app.domain.model.MedicalRecord;
-import app.domain.model.Patient;
-import app.domain.repositories.NurseRepository;
-import app.domain.valueobject.Id;
-
+ 
+import java.util.List;
+import java.util.stream.Collectors;
+ 
 @Service
 public class NurseUseCase {
-	
-	@Autowired
-	private NurseRepository nurseRepository;
-	
-	public void addMedicalRecord(Id addMedicalRecord) {
-		Id medicalRecordRepository = addMedicalRecord;
-	}
-	public List<MedicalRecord> searchMedicalRecordByid(Id searchMedicalRecordByid){
-		return (List<MedicalRecord>) searchMedicalRecordByid;
-	}
-	public List<Patient> searchPatientByid(Id searchPatientByid){
-		return (List<Patient>) searchPatientByid;
-	}
-	
-
+ 
+    @Autowired
+    private UserManagementService userManagementService;
+ 
+    @Autowired
+    private UserRepository userRepository;
+ 
+    public void createNurse(User user) throws Exception {
+        user.setRole(Role.NURSE);
+        userManagementService.create(user);
+    }
+ 
+    public List<User> findAllNurses() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .filter(u -> u.getRole() == Role.NURSE)
+                .collect(Collectors.toList());
+    }
+ 
+    public void updateNurse(long id, User updatedNurse) throws Exception {
+        updatedNurse.setRole(Role.NURSE);
+        userManagementService.update(id, updatedNurse);
+    }
+ 
+    public void deleteNurse(long id) throws Exception {
+        userManagementService.delete(id);
+    }
 }
